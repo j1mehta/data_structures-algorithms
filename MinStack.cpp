@@ -43,18 +43,18 @@ public:
     }
 };
 
-int main() {
-    MinStack* obj = new MinStack();
-    cout << obj->top();
-    obj->push(512);
-    obj->push(-1024);
-    obj->push(-1024);
-    obj->push(512);
-    obj->pop();
-    cout << obj->getMin() << " ";
-    obj->pop();
-    cout << obj->getMin() << " ";
-    obj->pop();
-    cout << obj->getMin() << " ";
-    return 0;
-}
+//int main() {
+//    MinStack* obj = new MinStack();
+//    cout << obj->top();
+//    obj->push(512);
+//    obj->push(-1024);
+//    obj->push(-1024);
+//    obj->push(512);
+//    obj->pop();
+//    cout << obj->getMin() << " ";
+//    obj->pop();
+//    cout << obj->getMin() << " ";
+//    obj->pop();
+//    cout << obj->getMin() << " ";
+//    return 0;
+//}
