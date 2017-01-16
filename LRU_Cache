@@ -1,0 +1,55 @@
+#include <iostream>
+#include<list>
+#include <map>
+#include<algorithm>
+using namespace std;
+
+class LRUCache{
+public:
+    LRUCache(int capacity): cap(capacity){}
+
+    int get(int key) {
+        if(M.find(key)!=M.end()){
+            auto it = find(L.begin(), L.end(), key);
+            L.erase(it);
+            L.push_front(key);
+            return M[key];
+        } else
+            return -1;
+    }
+
+    void set(int key, int value) {
+        if(cap>0){
+            if(M.find(key)==M.end())
+                cap--;
+            M[key] = value;
+            auto it = find(L.begin(), L.end(), key);
+            if(it ==L.end())
+                L.push_front(key);
+            else{
+                L.erase(it);
+                L.push_front(key);
+            }
+        }
+        else{
+            if(M.find(key)!=M.end()){
+                M[key] = value;
+                auto it = find(L.begin(), L.end(), key);
+                L.erase(it);
+                L.push_front(key);
+            }
+            else{
+                int remove_key = L.back();
+                L.pop_back();
+                M.erase(remove_key);
+                M[key] = value;
+                L.push_front(key);
+            }
+        }
+    }
+
+private:
+    list<int> L;
+    map<int, int> M;
+    int cap = 0;
+};
