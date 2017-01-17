@@ -1,0 +1,32 @@
+class Solution {
+public:
+    void makeDict(){
+        dict.insert(make_pair('I',1));
+        dict.insert(make_pair('V',5));
+        dict.insert(make_pair('X',10));
+        dict.insert(make_pair('L',50));
+        dict.insert(make_pair('C',100));
+        dict.insert(make_pair('D',500));
+        dict.insert(make_pair('M',1000));
+    }
+    int romanToInt(string s) {
+        makeDict();
+
+        int res = 0;
+        int c_4 = 0;
+        int c_9 = 0;
+        int length = s.length();
+
+        res += dict[s.back()];
+        for(int i=length-2; i>=0; --i){
+            if(dict[s[i]]<dict[s[i+1]])
+                res -= dict[s[i]];
+            else
+                res += dict[s[i]];
+        }
+        return res;
+    }
+
+private:
+    map<char, int> dict;
+};
