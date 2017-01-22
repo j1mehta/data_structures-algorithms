@@ -1,0 +1,24 @@
+class Solution {
+public:
+    int indexOfMin(vector<string>& strs){
+        int min_ind = INT16_MAX;
+        for(int i = 0; i <strs.size(); i++){
+            min_ind = min(min_ind, int(strs[i].size()));
+        }
+        return min_ind;
+    }
+
+    string longestCommonPrefix(vector<string>& strs) {
+        string res = "";
+        int min = indexOfMin(strs);
+        for(int i=0; i<min; i++){
+            char x = strs[0][i];
+            for(int j =0; j<strs.size(); j++ ){
+                if(strs[j][i]!=x)
+                    return res;
+            }
+            res +=x;
+        }
+        return res;
+    }
+};
